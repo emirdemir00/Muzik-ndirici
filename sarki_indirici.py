@@ -2,7 +2,7 @@ import os
 try:
     import yt_dlp
 except ImportError:
-    print("kütüphane bulunamadı.")
+    print("kütüphaneyi bulamadım")
     exit()
 
 def sarki_indir(arama_terimi):
@@ -32,7 +32,7 @@ def sarki_indir(arama_terimi):
                 print(f"Bulundu: {sarki_adi}")
             
             ydl.download([arama_sorgusu])
-            print("İndirme başarıyla tamamlandı\n")
+            print("İndirme tamamlandı\n")
             
     except Exception as e:
         print(f"İndirilemedi. {e}\n")
@@ -47,19 +47,19 @@ def ana_menu():
         os.makedirs(klasor_adi)
     
     os.chdir(klasor_adi)
-    print(f"Şarkılar şu klasöre indirilecek: {os.path.abspath('.')}\n")
+    print(f"şarkılar şu klasöre inecek: {os.path.abspath('.')}\n")
 
     while True:
-        istek = input("İndirmek istediğiniz şarkıyı yazın: ").strip()
+        istek = input("indirmek istediğiniz şarkıyı yazın: ").strip()
         
-        if istek.lower() in ['q', 'çıkış', 'cikis', 'quit', 'exit']:
-            print("Programdan çıkılıyor.")
+        if istek.lower() in ['exit']:
+            print("kapatılıyor")
             break
             
         if istek:
             sarki_indir(istek)
         else:
-            print("Lütfen geçerli bir şarkı adı yazın.")
+            print("geçersiz şarkı adı")
 
 if __name__ == "__main__":
     ana_menu()
