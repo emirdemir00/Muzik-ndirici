@@ -20,7 +20,7 @@ def sarki_indir(arama_terimi):
         'extract_audio': True,
     }
 
-    print(f"\n🔎 '{arama_terimi}' aranıyor ve indiriliyor... Lütfen bekleyin.")
+    print(f"\n🔎 '{arama_terimi}' aranıyor ve indiriliyor")
     
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -28,8 +28,8 @@ def sarki_indir(arama_terimi):
             
             info = ydl.extract_info(arama_sorgusu, download=False)
             if 'entries' in info and len(info['entries']) > 0:
-                sarki_adi = info['entries'][0].get('title', 'Bilinmeyen Şarkı')
-                print(f"🎵 Bulundu: {sarki_adi}")
+                sarki_adi = info['entries'][0].get('title', 'Şarkıyı bulamadım')
+                print(f"Bulundu: {sarki_adi}")
             
             ydl.download([arama_sorgusu])
             print("İndirme başarıyla tamamlandı\n")
@@ -41,7 +41,6 @@ def ana_menu():
     print("="*50)
     print("Müzik İndirici")
     print("="*50)
-    print("Çıkmak için 'q' veya 'çıkış' yazın.\n")
     
     klasor_adi = "Müzikler"
     if not os.path.exists(klasor_adi):
